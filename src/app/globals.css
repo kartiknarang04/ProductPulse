@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: #F5F8FA; /* Twitter background color */
+    --foreground: #1C2938; /* Twitter primary text color */
+
+    --card: #FFFFFF; /* Twitter card background color */
+    --card-foreground: #1C2938; /* Twitter card text color */
+ 
+    --popover: #FFFFFF; /* Twitter popover background color */
+    --popover-foreground: #1C2938; /* Twitter popover text color */
+ 
+    --primary: #00008B; /* Twitter primary color */
+    --primary-foreground: #FFFFFF; /* Twitter primary text color */
+ 
+    --secondary: #657786; /* Twitter secondary color */
+    --secondary-foreground: #1C2938; /* Twitter secondary text color */
+ 
+    --muted: #657786; /* Twitter muted color */
+    --muted-foreground: #657786; /* Twitter muted text color */
+ 
+    --accent: #657786; /* Twitter accent color */
+    --accent-foreground: #1C2938; /* Twitter accent text color */
+ 
+    --destructive: #E0245E; /* Twitter destructive color */
+    --destructive-foreground: #FFFFFF; /* Twitter destructive text color */
+
+    --border: #E1E8ED; /* Twitter border color */
+    --input: #E1E8ED; /* Twitter input color */
+    --ring: #1DA1F2; /* Twitter ring color */
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: #1C2938; /* Twitter dark background color */
+    --foreground: #FFFFFF; /* Twitter dark primary text color */
+ 
+    --card: #1C2938; /* Twitter dark card background color */
+    --card-foreground: #FFFFFF; /* Twitter dark card text color */
+ 
+    --popover: #1C2938; /* Twitter dark popover background color */
+    --popover-foreground: #FFFFFF; /* Twitter dark popover text color */
+ 
+    --primary: #00008B; /* Twitter dark primary color */
+    --primary-foreground: #1C2938; /* Twitter dark primary text color */
+ 
+    --secondary: #8899A6; /* Twitter dark secondary color */
+    --secondary-foreground: #FFFFFF; /* Twitter dark secondary text color */
+ 
+    --muted: #8899A6; /* Twitter dark muted color */
+    --muted-foreground: #546E7A; /* Twitter dark muted text color */
+ 
+    --accent: #8899A6; /* Twitter dark accent color */
+    --accent-foreground: #FFFFFF; /* Twitter dark accent text color */
+ 
+    --destructive: #E0245E; /* Twitter dark destructive color */
+    --destructive-foreground: #FFFFFF; /* Twitter dark destructive text color */
+ 
+    --border: #37444D; /* Twitter dark border color */
+    --input: #37444D; /* Twitter dark input color */
+    --ring: #1DA1F2; /* Twitter dark ring color */
+  }
+}
