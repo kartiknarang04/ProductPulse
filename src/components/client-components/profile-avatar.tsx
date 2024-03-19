@@ -1,115 +1,120 @@
-"use client";
 
-import React, { useContext, useEffect, useState, useTransition } from "react";
+"use client"; 
+import React, { useEffect, useState, useTransition } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSupabase } from "@/app/supabase-provider";
-import { toast } from "sonner";
+import { toast } from 'sonner';
 import { nanoid } from "nanoid";
 import { saveNewAvatar } from "@/lib/supabase/mutation";
 
 type ProfileAvatarProps = {
-    username?: string;
-    avatarUrl: string | null;
-    isOnTimeline?: boolean;
+  username?: string;
+  avatarUrl: string | null;
+  isOnTimeline?: boolean;
 };
 
 const ProfileAvatar = ({
-    username,
-    avatarUrl,
-    isOnTimeline = false,
+  username,
+  avatarUrl,
+  isOnTimeline = false,
 }: ProfileAvatarProps) => {
-    const [profileImage, setProfileImage] = useState("");
+  const [profileImage, setProfileImage] = useState("");
+  const { supabase } = useSupabase();
+  const [isMutationLoading, startTransition] = useTransition();
 
-    const { supabase } = useSupabase();
+  const uploadAvatar = async (file: File | null) => {
+    if (file) {
+      const { data, error } = await supabase.auth.getUser();
 
-    let [isMutationLoading, startTransition] = useTransition();
+      if (error) {
+        return toast.error("Please sign in");
+      }
 
-    const uploadAvatar = async (file: File | null) => {
-        if (file) {
-            const { data, error } = await supabase.auth.getUser();
+      if (data.user.user_metadata.username !== username) {
+        return toast.error("You can only change your profile pic");
+      }
 
-            if (error) {
-                return toast.error("please sign in");
-            }
+      setProfileImage(URL.createObjectURL(file));
 
-            if (data.user.user_metadata.username !== username) {
-                return toast.error("you can only change your profile pic");
-            }
+      const newFilePath = `public/${data.user.id}-${nanoid()}`;
 
-            setProfileImage(URL.createObjectURL(file));
+      const { data: uploadedRes, error: uploadError } = await supabase.storage
+        .from("avatars")
+        .upload(newFilePath, file);
 
-            const newFilePath = `public/${data.user.id}-${nanoid()}`;
+      if (uploadError) {
+        return toast.error(uploadError.message);
+      }
 
-            const { data: uploadedRes, error: UploadError } = await supabase.storage
-                .from("avatars")
-                .upload(newFilePath, file);
+      const { data: { publicUrl }, error: urlError } = await supabase.storage
+  .from("avatars")
+  .getPublicUrl(newFilePath);
 
-            if (UploadError) {
-                return toast.error(UploadError.message);
-            }
+if (urlError) {
+  return toast.error(urlError.message);
+}
 
-            const {
-                data: { publicUrl },
-            } = supabase.storage.from("avatars").getPublicUrl(newFilePath);
+if (!publicUrl) {
+  return toast.error("Public URL not found");
+}
 
-            setProfileImage(publicUrl);
+setProfileImage(publicUrl);
 
-            startTransition(() =>
-                saveNewAvatar({ publicUrl, profileId: data.user.id })
-            );
-        }
+startTransition(() =>
+  saveNewAvatar({ publicUrl, profileId: data.user.id })
+);
+
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (profileImage !== "") {
+        URL.revokeObjectURL(profileImage);
+      }
     };
+  }, [profileImage]);
 
-    useEffect(() => {
-        return () => {
-            if (profileImage !== "") {
-                URL.revokeObjectURL(profileImage);
-            }
-        };
-    }, [profileImage]);
-
-    return (
-        <div>
-            <div className="relative w-fit">
-                {!isOnTimeline && (
-                    <input
-                        type="file"
-                        name="user-avatar"
-                        id="user-avatar"
-                        className="invisible absolute"
-                        accept="image/jpeg,image/png,image/jpg,image/gif"
-                        onChange={(e) => uploadAvatar(e.target.files && e.target.files[0])}
-                        disabled={isMutationLoading}
-                    />
-                )}
-                <label
-                    htmlFor={isOnTimeline ? "" : "user-avatar"}
-                    className={!isOnTimeline ? "cursor-pointer" : ""}
-                >
-                    <Avatar>
-                        {profileImage !== "" ? (
-                            <AvatarImage
-                                src={profileImage}
-                                alt={`@${username}`}
-                                className="object-cover bg-center"
-                            />
-                        ) : (
-                            <AvatarImage
-                                src={avatarUrl || ""}
-                                alt={`@${username}`}
-                                className="object-cover bg-center"
-                            />
-                        )}
-                        <AvatarFallback>
-                            {username
-                                ? `${username[0]} ${username[username.length - 1]}`
-                                : ""}
-                        </AvatarFallback>
-                    </Avatar>
-                </label>
-            </div>
-        </div>
-    );
+  return (
+    <div>
+      <div className="relative w-fit">
+        {!isOnTimeline && (
+          <input
+            type="file"
+            name="user-avatar"
+            id="user-avatar"
+            className="invisible absolute"
+            accept="image/jpeg,image/png,image/jpg,image/gif"
+            onChange={(e) => uploadAvatar(e.target.files && e.target.files[0])}
+            disabled={isMutationLoading}
+          />
+        )}
+        <label
+          htmlFor={isOnTimeline ? "" : "user-avatar"}
+          className={!isOnTimeline ? "cursor-pointer" : ""}
+        >
+          <Avatar>
+            {profileImage !== "" ? (
+              <AvatarImage
+                src={profileImage}
+                alt={`@${username}`}
+                className="object-cover bg-center"
+              />
+            ) : (
+              <AvatarImage
+                src={avatarUrl || ""}
+                alt={`@${username}`}
+                className="object-cover bg-center"
+              />
+            )}
+            <AvatarFallback>
+              {username ? `${username[0]} ${username[username.length - 1]}` : ""}
+            </AvatarFallback>
+          </Avatar>
+        </label>
+      </div>
+    </div>
+  );
 };
 
 export default ProfileAvatar;

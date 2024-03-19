@@ -1,6 +1,6 @@
 import React from 'react'
 import LeftSidebar from '@/components/left-sidebar'
-import RightSection from '@/components/right-section'
+import Rightsidebar from './Rightsidebar'
 import MainComponent from '@/components/main-component'
 
 import { Metadata } from 'next'
@@ -17,7 +17,7 @@ const Home=()=>{
         <div className="flex-grow">
           <MainComponent />
         </div>
-        <RightSection />
+        <Rightsidebar />
       </div>
     </div>
   )

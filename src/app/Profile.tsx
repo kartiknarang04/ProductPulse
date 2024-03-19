@@ -32,6 +32,10 @@ const ProfileCard = () => {
         </div>
       </div>
     </div>
+    <div className='flex justify-around text-xl mb-2 underline decoration-primary underline-offset-[4px] decoration-[4px]'>
+        <h2 className='hover:bg-white/10 last:rounded-b-xl p-2 transition duration-200 text-white'>Posts</h2>
+        <h2 className='hover:bg-white/10 last:rounded-b-xl p-2 transition duration-200 text-white'>Replies</h2>
+      </div>
     </main>
   );
 };

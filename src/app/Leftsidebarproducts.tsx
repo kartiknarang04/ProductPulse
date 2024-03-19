@@ -32,33 +32,7 @@ const NavigationItems = [
 ];
 
 const Leftsidebarproducts= () => {
-  const [userData, setUserData] = useState(null);
-  const [userError, setUserError] = useState(null);
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        // Assuming cookies are handled correctly
-        const supabaseClient = createServerComponentClient({
-          cookies: () => document.cookie // Adjust this according to your cookie handling logic
-        });
-    
-        const { data, error } = await supabaseClient.auth.getUser();
-        if (error) {
-          throw new Error(error.message);
-        } else {
-          return data;
-        }
-      } catch (error) {
-        throw new Error(`Failed to fetch user data: ${error.message}`);
-      }
-    };
-    
-
-    fetchUserData();
-  }, []);
-
-  return (
+   return (
     <section className='fixed w-[275px] flex flex-col items-stretch h-screen'>
       <div className='flex flex-col items-stretch h-full space-y-4 mt-4 text-white'>
         <Link href={"/"} className='text-4xl my-3'>
@@ -90,12 +64,7 @@ const Leftsidebarproducts= () => {
         <div className="flex items-center space-x-2">
           <div className="rounded-full bg-slate-400 w-10 h-10"></div>
           <div className="text-left text-sm">
-  <div className="font-semibold">
-    {userData?.user_metadata?.full_name || 'Loading...'}
-  </div>
-  <div className="">
-    @{userData?.user_metadata?.username || 'Loading...'}
-  </div>
+  
 </div>
         </div>
         <div>

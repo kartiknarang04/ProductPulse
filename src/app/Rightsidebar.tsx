@@ -23,24 +23,38 @@ const Rightsidebar = () => {
       <div className="flex flex-col rounded-xl bg-neutral-900  my-4">
         <h3 className="font-bold text-xl mt-4 mb-6 px-4 text-white">Trending Discussions</h3>
         <div>
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div
-              key={i}
-              className="hover:bg-white/10 p-4 last:rounded-b-xl transition duration-200 text-white"
-            >
+            <div className="hover:bg-white/10 p-4 last:rounded-b-xl transition duration-200 text-white">
               <div className="font-bold text-lg ">#PayTM Downfall</div>
-              <div className="text-xs text-neutral-400">35.4k</div>
+              <div className="text-xs text-neutral-400">15.8k</div>
             </div>
-          ))}
         </div>
+        <div>
+            <div className="hover:bg-white/10 p-4 last:rounded-b-xl transition duration-200 text-white">
+              <div className="font-bold text-lg ">#Devin AI</div>
+              <div className="text-xs text-neutral-400">100.8k</div>
+            </div>
+        </div>
+        <div>
+            <div className="hover:bg-white/10 p-4 last:rounded-b-xl transition duration-200 text-white">
+              <div className="font-bold text-lg ">#OpenAI</div>
+              <div className="text-xs text-neutral-400">500.1k</div>
+            </div>
+        </div>
+        <div>
+            <div className="hover:bg-white/10 p-4 last:rounded-b-xl transition duration-200 text-white">
+              <div className="font-bold text-lg ">#ProductPulse</div>
+              <div className="text-xs text-neutral-400">20.4k</div>
+            </div>
+        </div>
+
       </div>
       <div className="flex flex-col rounded-xl bg-neutral-900  my-4">
         <h3 className="font-bold text-xl my-4 px-4 text-white">Tags</h3>
         <div className="font-bold text-xl px-4 text-white">
-            <div className="font-bold text-lg my-2">#Suggestions</div>
-            <div className="font-bold text-lg my-2">#Feedback</div>
-            <div className="font-bold text-lg my-2">#Problems</div>
-            <div className="font-bold text-lg my-2">#Case Studies</div>
+            <div className="font-bold text-lg mt-2 my-2">#Suggestions</div>
+            <div className="font-bold text-lg mt-2 my-2">#Feedback</div>
+            <div className="font-bold text-lg mt-2 my-2">#Problems</div>
+            <div className="font-bold text-lg mt-2 my-2">#Case Studies</div>
         </div>
         </div>
 

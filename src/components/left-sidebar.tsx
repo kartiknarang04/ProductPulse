@@ -6,6 +6,7 @@ import { GiPlagueDoctorProfile } from "react-icons/gi";
 import Link from 'next/link';
 import { BsFillRocketTakeoffFill, BsThreeDots } from "react-icons/bs";
 import { BiHomeCircle, BiUser } from "react-icons/bi";
+
 import {
     BsBell,
     BsBookmark,
@@ -15,6 +16,8 @@ import {
 import { HiOutlineHashtag } from "react-icons/hi";
 import { HiEnvelope } from "react-icons/hi2";
 import { cookies, headers } from "next/headers";
+
+import { BiMessageSquareDetail } from 'react-icons/bi';
 
 const NavigationItems = [
     {
@@ -32,7 +35,11 @@ const NavigationItems = [
     {
       title: 'Profile',
       icon: GiPlagueDoctorProfile
-    }
+    },
+    {
+        title: 'Messages',
+        icon: BiMessageSquareDetail
+      }
   ];
   const LeftSidebar = async () => {
     const supabaseClient = createServerComponentClient({
@@ -52,8 +59,8 @@ const NavigationItems = [
                     <Link
                         className={
                             item.title === "Community"
-                                ? 'hover:bg-blue-100 transition text-2xl duration-200 flex items-center justify-start w-fit space-x-4 rounded-3xl py-2 px-6  text-blue-400'
-                                : 'hover:bg-blue-100 transition text-2xl duration-200 flex items-center justify-start w-fit space-x-4 rounded-3xl py-2 px-6'
+                            ? 'hover:bg-primary transition text-2xl duration-200 flex items-center justify-start w-fit space-x-4 rounded-3xl py-2 px-6 text-blue-400'
+                            : 'hover:bg-primary transition text-2xl duration-200 flex items-center justify-start w-fit space-x-4 rounded-3xl py-2 px-6'
                         }
                         href={
                             item.title === "Community"

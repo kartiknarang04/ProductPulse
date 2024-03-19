@@ -23,27 +23,47 @@ const Rightsidebarproducts = () => {
       <div className="flex flex-col rounded-xl bg-neutral-900  my-4">
         <h3 className="font-bold text-xl mt-4 mb-6 px-4 text-white">Trending Products</h3>
         <div>
-          {Array.from({ length: 3 }).map((_, i) => (
+        
             <div
-              key={i}
               className="hover:bg-white/10 p-4 last:rounded-b-xl transition duration-200 text-white">
               <div className="font-bold text-lg ">#Swapnarambh AI</div>
               <div className="text-xs text-neutral-400">35.4k</div>
             </div>
-          ))}
+
+            <div
+              className="hover:bg-white/10 p-4 last:rounded-b-xl transition duration-200 text-white">
+              <div className="font-bold text-lg ">#Nyun AI</div>
+              <div className="text-xs text-neutral-400">20.8k</div>
+            </div>
+
+            <div
+              className="hover:bg-white/10 p-4 last:rounded-b-xl transition duration-200 text-white">
+              <div className="font-bold text-lg ">#Devin AI</div>
+              <div className="text-xs text-neutral-400">100.4k</div>
+            </div>
+    
         </div>
       </div>
       <div className="flex flex-col rounded-xl bg-neutral-900  my-4">
         <h3 className="font-bold text-xl my-4 px-4 text-white">Promoted Products</h3>
         <div className="font-bold text-xl px-4 text-white">
-          {Array.from({ length: 3 }).map((_, i) => (
               <div
-                key={i}
                 className="hover:bg-white/10 p-4 last:rounded-b-xl transition duration-200">
-                <div className="font-bold text-lg text-white ">#Blah Blah</div>
+                <div className="font-bold text-lg text-white ">#Devin AI</div>
+                <div className="text-xs text-neutral-400 text-white">100.8k</div>
+              </div>
+
+              <div
+                className="hover:bg-white/10 p-4 last:rounded-b-xl transition duration-200">
+                <div className="font-bold text-lg text-white ">#Swapnarambh AI</div>
                 <div className="text-xs text-neutral-400 text-white">35.4k</div>
               </div>
-            ))}
+
+              <div
+                className="hover:bg-white/10 p-4 last:rounded-b-xl transition duration-200">
+                <div className="font-bold text-lg text-white ">#Flex AI</div>
+                <div className="text-xs text-neutral-400 text-white">46.7k</div>
+              </div>
         </div>
         </div>
 

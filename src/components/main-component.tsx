@@ -64,7 +64,7 @@ Please include a feature so that users doesn’t have to rely on third party too
         <div className='w-10 h-10 bg-slate-400 rounded-full flex-none'></div>
         <div className='flex flex-col w-full h-full'>
         <div className="text-white text-sm ml-2">
-            <p><span className="font-bold text-xl mb-2">ProductPulse</span> @ProductPulse.com 1 day ago</p>
+            <p><span className="font-bold text-xl mb-2">Kartik Narang</span> @kartiknarang@gmail.com 1 day ago</p>
             <p><br />I want to send a watch as a gift to my sister who is currently in USA but it is very expensive. Any soultions?
 <br /><span className=" mt-2 text-lg text-blue-300">#Problem</span><br /></p>
             <div className='w-full mt-2 h-[210px] bg-slate-400 rounded flex-none'></div>
